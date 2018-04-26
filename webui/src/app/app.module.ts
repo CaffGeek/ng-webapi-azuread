@@ -26,7 +26,6 @@ const appRoutes: Routes = [
     AppComponent,
     NavigationComponent,
     ForbiddenComponent,
-    SharedModule,
   ],
   exports: [
   ],
@@ -35,6 +34,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes, {useHash: true}),
     HttpModule,
     FormsModule, 
+    SharedModule,
   ],
   providers: [
     AdalService,

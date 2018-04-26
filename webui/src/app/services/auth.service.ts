@@ -50,10 +50,11 @@ export class AuthService {
     }
 
     async checkRoles(roles:string[]){
-        if(!this.isAuthenticated()) return false;
-        if(!this.roleMap || !this.roleMap.length) {
+        if(!this.isAuthenticated()) 
+            return false;
+
+        if(!this.roleMap || !this.roleMap.length) 
             this.roleMap = await this.loadRoleMap();
-        }
         
         if(roles && roles.length > 0)
         { 

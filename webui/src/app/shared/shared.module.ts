@@ -3,7 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';  
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-
+import { IfRoleDirective } from './if-role/if-role.directive';
 
 @NgModule({
     imports: [
@@ -14,9 +14,11 @@ import { RouterModule } from '@angular/router';
         ReactiveFormsModule,
     ],
     declarations: [
+        IfRoleDirective,
     ],
     exports: [
         ReactiveFormsModule,
+        IfRoleDirective,
     ],
     providers: [        
     ],
