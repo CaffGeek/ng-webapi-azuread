@@ -1,0 +1,30 @@
+# Ng WebAPI AzureAD
+
+## Create your web app in Azure
+
+## Setup Deployment from GitHub (or whatever)
+
+ - Go to your app service
+ - Select Deployment Options
+ - Choose your source (GitHub) and follow the steps to choose product/branch/etc
+
+## Setup AzureAD for your app
+
+Follow the steps here to setup AzureAD for your app (https://docs.microsoft.com/en-us/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication)
+
+## Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Before running the tests make sure you are serving the app via `ng serve`.
