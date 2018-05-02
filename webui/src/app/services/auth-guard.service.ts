@@ -10,13 +10,10 @@ export class AuthGuard implements CanActivate {
         private router: Router
     ) { }
     
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean  {
- 
-        if(this.authService.checkRoles(route.data.roles as string[])){        
-               return true;
-        }
-        
-        this.router.navigate(['/unauthorized']);
-        return false;
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : boolean {
+        this.authService.checkRoles(route.data.roles as string[])
+            .then(hasRole => { if (!hasRole) this.router.navigate(['/forbidden'])});
+
+        return true;
     }
 }
