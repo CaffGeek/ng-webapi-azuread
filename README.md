@@ -4,9 +4,7 @@
 
 ## Setup Deployment from GitHub (or whatever)
 
- - Go to your app service
- - Select Deployment Options
- - Choose your source (GitHub) and follow the steps to choose product/branch/etc
+ ...
 
 ## Setup AzureAD for your app
 

@@ -8,7 +8,8 @@ declare var AuthenticationContext: adal.AuthenticationContextStatic;
 declare var Logging: adal.Logging;
 
 declare module 'adal' {
-    export = { AuthenticationContext, Logging };
+    const _export: { AuthenticationContext, Logging };
+    export = _export;
 }
 
 declare namespace adal {
