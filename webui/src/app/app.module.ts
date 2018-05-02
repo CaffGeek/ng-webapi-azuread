@@ -16,6 +16,9 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { ForbiddenComponent } from './security/forbidden/forbidden.component';
 
 import { SharedModule } from './shared/shared.module';
+import { AdminModule } from './admin/admin.module';
+import { EveryoneModule } from './everyone/everyone.module';
+import { UsersModule } from './users/users.module';
 
 const appRoutes: Routes = [
   { path: 'forbidden', component: ForbiddenComponent, pathMatch:'full' }, 
@@ -35,6 +38,9 @@ const appRoutes: Routes = [
     HttpModule,
     FormsModule, 
     SharedModule,
+    AdminModule,
+    EveryoneModule,
+    UsersModule,
   ],
   providers: [
     AdalService,
