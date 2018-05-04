@@ -7,7 +7,7 @@ export const environment = {
   production: false,
   envName: '', 
   apiEndpoint: '', 
-  tenant: '',
+  tenant: 'gibblegmail.onmicrosoft.com',
   postLogoutRedirect: '',
-  webApiClientId: ''
+  webApiClientId: '11238d1e-b477-4c6c-9e21-5acd3e7b6ece', //ApplicationID in azure
 };

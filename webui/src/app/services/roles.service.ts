@@ -3,7 +3,8 @@ import { environment } from '../../environments/environment';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/map'
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class RolesService {
@@ -15,7 +16,8 @@ export class RolesService {
   getRoleMap() : Observable<RoleMap[]> {
     return this.http
         .get(`${this.apiEndPoint}/rolemap`)
-        .map(results => results.json());
+        .map(results => results.json())
+        .catch(error => Observable.of(<RoleMap[]>[]));//No roles
   }
 }
 
