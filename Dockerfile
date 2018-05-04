@@ -25,8 +25,5 @@ WORKDIR c:\\inetpub\\wwwroot
 
 COPY --from=builder c:\\ng-app\\dist .
 
-RUN PWD
-RUN DIR
-
 SHELL ["powershell", "-Command"]
 ENTRYPOINT C:\ServiceMonitor.exe w3svc 
