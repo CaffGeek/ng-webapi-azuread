@@ -55,7 +55,7 @@ export class AuthService {
 
         if(!this.roleMap || !this.roleMap.length) 
             this.roleMap = await this.loadRoleMap();
-        
+            
         if(roles && roles.length > 0)
         { 
             var mappedRoles = roles.map((r:string):string => {                
@@ -63,11 +63,21 @@ export class AuthService {
                 return m ? m.mapped : r;
             });
             
-            const userHasRole = (profileRoles, routeRoles) => {
-                return profileRoles && routeRoles && (routeRoles.filter(r=> profileRoles.indexOf(r) >= 0).length > 0);
+            const userHasRole = (profileRoles:string[], routeRoles:string[]) => {
+                var upperProfileRoles = [].concat.apply([], profileRoles || []).filter(x => !!x).map(x => x.toUpperCase());
+                var upperRouteRoles = [].concat.apply([], routeRoles || []).filter(x => !!x).map(x => x.toUpperCase());
+
+                var hasRole = profileRoles && routeRoles 
+                    && (upperRouteRoles.filter(r => upperProfileRoles.indexOf(r) >= 0).length > 0);
+
+                    return hasRole;
             };
-            return userHasRole(this.adalService.userInfo.profile.roles, mappedRoles); 
+
+            var result = userHasRole(this.adalService.userInfo.profile.roles, mappedRoles); 
+
+            return result;
         }
+        
         return true;         
     }
 

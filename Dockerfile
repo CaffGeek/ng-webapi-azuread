@@ -1,4 +1,4 @@
-# Stage 1
+# Stage 1 - build angular app
 
 FROM stefanscherer/node-windows as builder
 
@@ -13,11 +13,13 @@ WORKDIR c:\\ng-app
 
 COPY ./webui .
 
-RUN npm run build
+#RUN npm run build
+#RUN ng build --env=dev
+RUN npm run ng build --env=dev
 
-# Stage 2
+# Stage 2 - deploy angular app
 
-FROM microsoft/iis
+FROM microsoft/iis as webui
 
 RUN powershell -NoProfile -Command Remove-Item -Recurse C:\inetpub\wwwroot\*
 
