@@ -1,28 +1,26 @@
 # Ng WebAPI AzureAD
 
-## Create your web app in Azure
-
-## Setup Deployment from GitHub (or whatever)
-
- ...
+This is meant to be a simple starting point to spin up an Angular app, with a .Net WebAPI backend, connecting to a SQL Server and using Azure AD for authentication
 
 ## Setup AzureAD for your app
 
 Follow the steps here to setup AzureAD for your app (https://docs.microsoft.com/en-us/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication)
 
-## Development server
+You'll need to create an ADMIN and USER role and assign them to a user
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Modify the webui/src/environments with your azure tenant and webApiClientId
 
-## Build
+- Modify the webapi/web.config with your azure tenant and webApiClientId
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## build and run
 
-## Running unit tests
+docker-compose build && docker-compose up
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## view it
 
-## Running end-to-end tests
+webui: http://127.0.0.1:8080
+webapi: http://127.0.0.1:8081
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+## Todo
+
+The webui seems to be working fine, the webapi is not working correctly, and the sql image isn't being referenced at all currently. Lots more to do
