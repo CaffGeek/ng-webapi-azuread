@@ -1,15 +1,17 @@
-powershell .\dockerSwitchDaemon.ps1 windows
+docker-compose up
 
-rem should also be deleted automatically due to the `docker run --rm` below
-docker kill webui
+REM powershell .\dockerSwitchDaemon.ps1 windows
 
-docker build -t ng-webapi-azuread -f Dockerfile .
+REM rem should also be deleted automatically due to the `docker run --rm` below
+REM docker kill webui
+REM docker build -t ng-webapi-azuread -f Dockerfile.webui .
 
-rem docker run --rm -it --name webui ng-webapi-azuread cmd
-docker run --rm -d --name webui ng-webapi-azuread
+REM rem docker run --rm -it --name webui ng-webapi-azuread cmd
+REM docker run --rm -d --name webui ng-webapi-azuread
 
-FOR /F "tokens=* USEBACKQ" %%F IN (`docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" webui`) DO (
-SET ipaddress=%%F
-)
+REM rem docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" webui
+REM FOR /F "tokens=* USEBACKQ" %%F IN (`docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" webui`) DO (
+REM SET ipaddress=%%F
+REM )
 
-start chrome %ipaddress%
+REM start chrome %ipaddress%

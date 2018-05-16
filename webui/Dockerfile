@@ -2,7 +2,7 @@
 
 FROM stefanscherer/node-windows as builder
 
-COPY webui/package.json ./
+COPY package.json ./
 
 ### Storing node modules on a separate layer will prevent unnecessary npm installs at each build
 RUN npm i 
@@ -11,7 +11,7 @@ RUN move node_modules ng-app
 
 WORKDIR c:\\ng-app
 
-COPY ./webui .
+COPY . .
 
 #RUN npm run build
 #RUN ng build --env=dev
