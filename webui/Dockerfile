@@ -13,8 +13,6 @@ WORKDIR c:\\ng-app
 
 COPY . .
 
-#RUN npm run build
-#RUN ng build --env=dev
 RUN npm run ng build --env=dev
 
 # Stage 2 - deploy angular app
