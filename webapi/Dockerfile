@@ -18,10 +18,9 @@ WORKDIR c:/build
 COPY . c:/build
 
 RUN nuget restore
-RUN msbuild.exe /t:Build /p:Configuration=Release /p:OutputPath=out /p:VSToolsPath=c:\MSBuild.Microsoft.VisualStudio.Web.targets.14.0.0.3\tools\VSToolsPath webapi.sln
-#RUN powershell ./Run-MsBuild.ps1
-#RUN ["C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\msbuild.exe", "/p:VSToolsPath=c:\MSBuild.Microsoft.VisualStudio.Web.targets.14.0.0.3\tools\VSToolsPath webapi.sln"]
-#RUN ["C:\\Program Files (x86)\\MSBuild\\14.0\\Bin\\msbuild.exe", "webapi.proj", "/p:VSToolsPath=C:\MSBuild.Microsoft.VisualStudio.Web.targets.14.0.0.3\tools\VSToolsPath"]
+
+RUN nuget install MSBuild.Microsoft.VisualStudio.Web.targets -Version 14.0.0.3
+RUN msbuild.exe webapi/webapi.csproj /t:Build /p:Configuration=Release /p:OutputPath=out /p:VSToolsPath=c:\MSBuild.Microsoft.VisualStudio.Web.targets.14.0.0.3\tools\VSToolsPath
 
 # Stage 2 - deploy app
 # FROM microsoft/iis as webui
@@ -32,5 +31,5 @@ RUN msbuild.exe /t:Build /p:Configuration=Release /p:OutputPath=out /p:VSToolsPa
 
 # COPY --from=builder c:\\build\\webapi .
 
-# SHELL ["powershell", "-Command"]
-# ENTRYPOINT C:\ServiceMonitor.exe w3svc 
+SHELL ["powershell", "-Command"]
+ENTRYPOINT C:\ServiceMonitor.exe w3svc 
