@@ -1,4 +1,15 @@
-docker-compose up
+docker-compose build && docker-compose up
+
+REM docker exec -it ng-webapi-azuread_webapi_1 cmd
+REM docker exec -it ng-webapi-azuread_webui_1 cmd
+
+
+
+
+
+
+
+
 
 REM powershell .\dockerSwitchDaemon.ps1 windows
 
