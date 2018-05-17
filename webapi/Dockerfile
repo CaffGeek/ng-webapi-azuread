@@ -18,7 +18,7 @@ RUN msbuild.exe webapi/webapi.csproj \
     /p:PublishProfile=FolderProfile
 
 # Stage 2 - deploy app
-FROM microsoft/aspnet as webui
+FROM microsoft/aspnet as webapi
 
 WORKDIR c:\\inetpub\\wwwroot
 
