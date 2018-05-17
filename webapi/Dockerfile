@@ -12,15 +12,14 @@ RUN nuget install MSBuildTasks -Version 1.5.0.235
 
 # TODO: this still isn't outputing how it should be
 RUN msbuild.exe webapi/webapi.csproj \
-    /p:VSToolsPath=c:\build\MSBuild.Microsoft.VisualStudio.Web.targets.14.0.0.3\tools\VSToolsPath \
+    /p:VSToolsPath=c:\MSBuild.Microsoft.VisualStudio.Web.targets.14.0.0.3\tools\VSToolsPath \
     /p:Configuration=Release \
     /p:DeployOnBuild=true \
     /p:PublishProfile=FolderProfile
 
 # Stage 2 - deploy app
-FROM microsoft/aspnet as webapi
+#FROM microsoft/aspnet as webapi
 
-WORKDIR c:\\inetpub\\wwwroot
+#WORKDIR c:\\inetpub\\wwwroot
 
-# TODO: This really isn't where we want it to copy from...but the msbuild publish isn't working properly
-COPY --from=builder c:\\build\\webapi\\obj\\Release\\Package\\PackageTmp .
+#COPY --from=builder c:\\build\\webapi\\bin\\publish\\release .
