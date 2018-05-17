@@ -10,6 +10,7 @@ import { AdalHTTPService } from './adal/adal-http.service';
 import { AdalService } from './adal/adal.service';
 import { AuthService } from './services/auth.service';
 import { RolesService } from './services/roles.service';
+import { LogService } from './services/log.service';
 
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -52,6 +53,7 @@ const appRoutes: Routes = [
     AuthService,
     AuthGuard,
     RolesService,
+    LogService,
     AuthorizedHttp
   ],
   bootstrap: [AppComponent]
