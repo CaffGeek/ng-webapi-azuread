@@ -1,3 +1,5 @@
+# escape=`
+
 # Stage 1 - build app
 FROM microsoft/aspnet as builder
 
@@ -19,6 +21,12 @@ RUN MSBuild.exe webapi.sln /p:Configuration=Release /p:PublishProfile=FolderProf
 
 # Stage 2 - deploy app
 FROM microsoft/aspnet as webapi
+
+#TODO: Get Auth working 
+#See: https://www.jamessturtevant.com/posts/Windows-Containers-Cheat-Sheet/
+RUN powershell.exe Add-WindowsFeature Web-Windows-Auth
+RUN powershell.exe -NoProfile -Command `
+    Set-WebConfigurationProperty -filter /system.webServer/security/authentication/windowsAuthentication -name enabled -value true -PSPath IIS:\ 
 
 WORKDIR c:\\inetpub\\wwwroot
 
